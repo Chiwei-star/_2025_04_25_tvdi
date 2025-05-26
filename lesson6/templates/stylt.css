@@ -1,0 +1,150 @@
+/* 基本重置和頁面樣式 (可選，根據您的現有樣式調整) */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* 使用更現代的字體，或您專案的字體 */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* 確保 footer 在內容不足時也能置底 */
+    background-color: #f4f4f4;
+    /* 假設頁面背景色 */
+}
+
+main {
+    flex: 1;
+    /* 讓主要內容區域填滿可用空間 */
+    padding: 20px;
+}
+
+/* Footer 樣式 */
+footer {
+    background-color: #c9d7e0;
+    /* 參考圖片的淺藍色背景 */
+    color: #333;
+    /* 深色文字，與圖片中文字顏色接近 */
+    padding: 20px 40px;
+    /* 上下 20px，左右 40px 的內邊距 */
+    font-size: 14px;
+    border-top: 1px solid #b0c4d4;
+    /* 頂部細微邊線，增加質感 */
+}
+
+.footer-main-content {
+    display: flex;
+    justify-content: space-between;
+    /* Logo 和導航分開 */
+    align-items: center;
+    /* 垂直置中對齊 */
+    max-width: 1200px;
+    /* 可選：限制最大寬度並置中 */
+    margin: 0 auto 15px auto;
+    /* 水平置中，並與版權文字間隔 */
+    flex-wrap: wrap;
+    /* 在小螢幕允許換行 */
+}
+
+.footer-logo img {
+    max-height: 40px;
+    /* 根據圖片調整 Logo 高度 */
+    width: auto;
+    /* 寬度自動調整以保持比例 */
+    vertical-align: middle;
+    /* 確保圖片與可能的文字基線對齊 */
+}
+
+.footer-nav ul {
+    list-style: none;
+    /* 移除列表符號 */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    /* 讓連結水平排列 */
+    flex-wrap: wrap;
+    /* 允許連結在小螢幕換行 */
+    gap: 20px;
+    /* 連結之間的間距 */
+}
+
+.footer-nav ul li {
+    margin: 5px 0;
+    /* 在換行時提供垂直間距 */
+}
+
+.footer-nav ul li a {
+    color: #2c3e50;
+    /* 連結文字顏色，參考圖片 */
+    text-decoration: none;
+    /* 移除底線 */
+    font-weight: 500;
+    /* 稍粗的字體 */
+    transition: color 0.3s ease;
+}
+
+.footer-nav ul li a:hover {
+    color: #1a2530;
+    /* 滑鼠懸停時顏色加深 */
+    text-decoration: underline;
+    /* 滑鼠懸停時顯示底線 */
+}
+
+.footer-copyright {
+    text-align: right;
+    /* 版權文字靠右對齊 */
+    font-size: 12px;
+    color: #555;
+    /* 版權文字顏色 */
+    max-width: 1200px;
+    /* 可選：限制最大寬度並置中 */
+    margin: 0 auto;
+    /* 水平置中 */
+    padding-top: 15px;
+    /* 與上方主要內容的間隔 */
+    border-top: 1px solid #b8c8d3;
+    /* 在主要內容和版權之間加一條細線，可選 */
+}
+
+/* 響應式設計 - 針對小螢幕調整 */
+@media (max-width: 768px) {
+    .footer-main-content {
+        flex-direction: column;
+        /* Logo 和導航垂直堆疊 */
+        align-items: flex-start;
+        /* 項目靠左對齊 */
+        gap: 15px;
+        /* 堆疊時的間距 */
+    }
+
+    .footer-nav ul {
+        justify-content: flex-start;
+        /* 導航項目靠左 */
+        gap: 15px;
+        /* 調整小螢幕連結間距 */
+    }
+
+    .footer-copyright {
+        text-align: center;
+        /* 小螢幕版權文字置中 */
+        margin-top: 20px;
+    }
+
+    footer {
+        padding: 20px;
+        /* 調整小螢幕內邊距 */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-nav ul {
+        flex-direction: column;
+        /* 更小螢幕連結垂直排列 */
+        align-items: flex-start;
+        /* 連結靠左 */
+        gap: 8px;
+    }
+
+    .footer-logo {
+        margin-bottom: 10px;
+        /* Logo 下方間距 */
+    }
+}
