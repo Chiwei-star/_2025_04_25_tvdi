@@ -1,16 +1,24 @@
-# print("Hello! Flask!")
 from flask import Flask,render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html.jinja2")
 
-@app.route("/user")
-def user():
-    return "<h1>user!</h1><p>這是我的第2頁</p>"
+@app.route("/classes")
+def classes():
+    return render_template("classes.html.jinja2")
 
-@app.route("/product")
-def product():
-    return "<h1>product!</h1><p>這是我的第3頁</p>"
+@app.route("/new")
+def new():
+    return render_template("new.html.jinja2")
+
+@app.route("/traffic")
+def traffic():
+    return render_template("traffic.html.jinja2")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html.jinja2")
+
