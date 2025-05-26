@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const menuButton = document.querySelector('.menu-button');
-    const navLinks = document.querySelector('.nav-links');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNavigation = document.querySelector('.main-navigation');
 
-    if (menuButton && navLinks) {
-        menuButton.addEventListener('click', function () {
-            navLinks.classList.toggle('active');
+    if (menuToggle && mainNavigation) {
+        menuToggle.addEventListener('click', function () {
+            mainNavigation.classList.toggle('toggled'); // 切換 .toggled class
+            const isExpanded = mainNavigation.classList.contains('toggled');
+            menuToggle.setAttribute('aria-expanded', isExpanded);
         });
     }
 });
