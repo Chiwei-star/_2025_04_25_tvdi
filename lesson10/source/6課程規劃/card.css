@@ -1,0 +1,149 @@
+/* Basic Reset & Body Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #FFFFFF;
+    line-height: 1.5;
+    /* Default line height */
+    color: #1E1E1E;
+    /* Default text color */
+}
+
+/* Overall Layout Container */
+.testimonial-grid-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    /* As per spec for overall layout */
+}
+
+/* Card Grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+}
+
+/* Single Testimonial Card */
+.testimonial-card {
+    background-color: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 8px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Quote Text */
+.quote-text {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.2em;
+    letter-spacing: -0.02em;
+    color: #1E1E1E;
+}
+
+/* Author Block */
+.author-block {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 139px;
+    /* As per spec "總寬度: 139px" */
+}
+
+/* Avatar */
+.avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    /* Prevent shrinking */
+    border-radius: 50%;
+    background-color: #EAEAEA;
+    color: #555555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 20px;
+    /* calc(40px * 0.5) */
+    /* Adjust letter size based on avatar size */
+    overflow: hidden;
+    /* For potential images */
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Author Info (Title & Description) */
+.author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    /* Take remaining space within author-block's fixed width */
+    min-width: 0;
+    /* Allow text to wrap correctly if it overflows */
+}
+
+/* Author Title */
+.author-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1.4em;
+    color: #757575;
+    /* Allow text to break to prevent overflow if too long for the constrained width */
+    word-break: break-word;
+}
+
+/* Author Description */
+.author-description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.4em;
+    color: #B3B3B3;
+    word-break: break-word;
+}
+
+/* Responsive Design - Mobile (≤767px) */
+@media (max-width: 768px) {
+    .testimonial-grid-container {
+        padding: 24px;
+        /* Container width is 100% by default for block elements, max-width still applies */
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+        /* 1 column layout */
+        gap: 24px;
+    }
+
+    .quote-text {
+        font-size: 20px;
+    }
+
+    .author-title {
+        font-size: 14px;
+    }
+
+    .author-description {
+        font-size: 14px;
+    }
+
+    /* Optional: If author-block width needs adjustment on mobile, though not specified */
+    /* .author-block {
+    width: auto; // Or a different fixed width if needed
+  } */
+}

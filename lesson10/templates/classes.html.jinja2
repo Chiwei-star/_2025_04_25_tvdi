@@ -1,0 +1,93 @@
+{% extends "layout/base.html.jinja2" %}
+{% block title %}
+職能發展學院-課程規劃
+{% endblock %}
+
+{% block link %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='css/classes.css')}}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+{% endblock%}
+
+{% block main %}
+<div class="course-tabs">
+    <div class="tab-container">
+        <button class="tab-item active" data-tab="general">一般課程</button>
+        <button class="tab-item" data-tab="advanced">進階課程</button>
+    </div>
+    <div class="tab-line"></div>
+</div>
+
+<section class="testimonial-grid-container">
+    <div class="card-grid">
+        <!-- Card 1 -->
+        <div class="testimonial-card">
+            <div class="quote-text">Quote</div>
+            <div class="author-block">
+                <div class="avatar">F</div>
+                <div class="author-info">
+                    <div class="author-title">Title</div>
+                    <div class="author-description">Description</div>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="testimonial-card">
+            <div class="quote-text">Quote</div>
+            <div class="author-block">
+                <div class="avatar">S</div>
+                <div class="author-info">
+                    <div class="author-title">Title</div>
+                    <div class="author-description">Description</div>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="testimonial-card">
+            <div class="quote-text">Quote</div>
+            <div class="author-block">
+                <div class="avatar">T</div>
+                <div class="author-info">
+                    <div class="author-title">Title</div>
+                    <div class="author-description">Description</div>
+                </div>
+            </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="testimonial-card">
+            <div class="quote-text">Quote</div>
+            <div class="author-block">
+                <div class="avatar">A</div>
+                <div class="author-info">
+                    <div class="author-title">Title</div>
+                    <div class="author-description">Description</div>
+                </div>
+            </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="testimonial-card">
+            <div class="quote-text">Quote</div>
+            <div class="author-block">
+                <div class="avatar">B</div>
+                <div class="author-info">
+                    <div class="author-title">Title</div>
+                    <div class="author-description">Description</div>
+                </div>
+            </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="testimonial-card">
+            <div class="quote-text">Quote</div>
+            <div class="author-block">
+                <div class="avatar">C</div>
+                <div class="author-info">
+                    <div class="author-title">Title</div>
+                    <div class="author-description">Description</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static',filename='js/classes.js')}}"></script>
+{% endblock %}
