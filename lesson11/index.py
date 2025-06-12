@@ -28,22 +28,22 @@ def classes(course_types):
         kinds = [kind[0] for kind in temps]
         kinds.reverse()
 
-        sql_course = f"""
+        sql_course = """
         SELECT
             "課程名稱",
-            "老師",
+            "群組",            
             "進修人數",
-            "報名開始日期",
-            "報名結束日期",
-            "課程內容",
-            "進修費用"
+            "進修時數",
+            "進修費用",
+            "上課時間",
+            "課程開始日期"
         FROM
             "進修課程"
         WHERE
-            "課程類別" = '{course_types}'
+            "課程類別" = %s
         LIMIT 6;
         """
-        cur.execute(sql_course)
+        cur.execute(sql_course,(course_types,))
         course_data = cur.fetchall()
         print(course_data)
 
