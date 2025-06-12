@@ -4,43 +4,42 @@
 {% endblock %}
 
 {% block link %}
-{{super()}}
-<link rel="stylesheet" href="{{url_for('static', filename='css/classes.css')}}">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    {{super()}}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/classes.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 {% endblock%}
 
 {% block main %}
 
 <div class="course-tabs">
-    <div class="tab-container">
-        {% for kind in kinds%}
-        <a href="/classes/{{'一般課程' if loop.first else '進階課程'}}"><button
-                class="tab-item {{'active' if loop.first}}">{{kind}}</button></a>
+        <div class="tab-container">
+        {% for kind in kinds%}     
+          <a href="/classes/{{'一般課程' if loop.first else '進階課程'}}" ><button class="tab-item {{'active' if loop.first}}">{{kind}}</button></a>
         {% endfor %}
-    </div>
-    <div class="tab-line"></div>
+        </div>
+        <div class="tab-line"></div>
 </div>
 <section class="testimonial-grid">
-    <div class="card-grid">
-        {%for course in course_data%}
-        <div class="testimonial-card">
-            <div class="quote-text">{{course[0]}}</div>
-            <div class="author-block">
-                <div class="avatar">
-                    <span>F</span>
-                    <!-- <img src="Card_Grid_Icon.png" alt="陳小明 頭像"> -->
-                </div>
-                <div class="author-info">
-                    <div class="author-title">{{course[1]}}</div>
-                    <div class="author-description">軟體工程師</div>
+  <div class="card-grid">
+  {%for course in course_data%}
+    <div class="card">
+        <div class="card-content">
+            <p class="card-category">資通訊群組</p>
+            <h3 class="card-title">Python視窗網路爬蟲</h3>
+            <div class="card-info">
+                <div class="card-divider"></div>
+                <div class="card-details">
+                    <p class="card-info-item">進修人數:25</p>
+                    <p class="card-info-item">進修時數:64小時</p>
+                    <p class="card-info-item">進修費用:1400元</p>
+                    <p class="card-info-item">上課時間:週二、四 08:30~17:05</p>
+                    <p class="card-info-item">開始日期:114.07.08</p>
                 </div>
             </div>
         </div>
-        {% endfor %}
-
-
-
     </div>
+  {% endfor %}
+  </div>
 </section>
 <script src="{{ url_for('static',filename='js/classes.js')}}"></script>
 {% endblock %}
