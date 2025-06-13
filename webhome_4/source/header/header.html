@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>網站標題</title>
+    <link rel="stylesheet" href="header.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo-link">
+                <img src="logo.jpg" alt="台北明明文教 Logo" class="logo-image">
+            </a>
+
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger-icon"></span>
+            </button>
+
+            <nav class="main-navigation">
+                <ul class="nav-list">
+                    <li><a href="#news">最新消息</a></li>
+                    <li><a href="#courses">課程訊息</a></li>
+                    <li><a href="#traffic">交通資訊</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Example content to demonstrate scrolling and sticky header (optional) -->
+    <main style="min-height: 150vh; padding: 20px; background-color: #e9e9e9;">
+        <h1>主要內容區域</h1>
+        <p>這是一些示例內容，以演示頁眉在滾動時的行為。</p>
+    </main>
+
+    <script src="header.js"></script>
+</body>
+
+</html>

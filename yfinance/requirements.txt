@@ -1,0 +1,10 @@
+requests
+Flask
+psycopg[binary]
+psycopg2-binary
+python-dotenv
+seaborn
+scikit-learn
+xgboost
+ta
+yellowbrick
