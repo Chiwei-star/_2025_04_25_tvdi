@@ -1,10 +1,11 @@
-requests
-Flask
-psycopg[binary]
-psycopg2-binary
-python-dotenv
+yfinance
+numpy
+scipy
+pandas
+matplotlib
 seaborn
+ta
 scikit-learn
 xgboost
-ta
 yellowbrick
+xelatex
