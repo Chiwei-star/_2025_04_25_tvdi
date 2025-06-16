@@ -2,6 +2,7 @@ yfinance
 numpy
 scipy
 pandas
+pandas_ta
 matplotlib
 seaborn
 ta

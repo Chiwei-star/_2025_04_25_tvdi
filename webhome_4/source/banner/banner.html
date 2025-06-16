@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>圖片輪播 Banner</title>
+    <link rel="stylesheet" href="./banner.css">
+</head>
+
+<body>
+
+    <div class="banner-slider">
+        <div class="slides-wrapper">
+            <!-- Slide 1 -->
+            <div class="slide active" style="background-image: url('your-original-image.jpg');">
+                <div class="slide-content">
+                    <h2>共濟 共融</h2>
+                    <p>凡事獨木難支 師生 親子 同儕<br>
+                        求同存異 共同成事<br>
+                        尊重 體諒 接納 關愛他人 上善若水</p>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide" style="background-image: url('placeholder-image-2.jpg');"> <!-- 替換成您的第二張圖片 -->
+                <div class="slide-content">
+                    <h2>探索 新知</h2>
+                    <p>勇於嘗試，不斷學習<br>
+                        開啟無限可能<br>
+                        拓展視野，成就未來</p>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide" style="background-image: url('placeholder-image-3.jpg');"> <!-- 替換成您的第三張圖片 -->
+                <div class="slide-content">
+                    <h2>攜手 前行</h2>
+                    <p>合作無間，共創輝煌<br>
+                        信任彼此，力量加倍<br>
+                        邁向成功，共享榮耀</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="slider-btn prev-btn" aria-label="上一張">❮</button>
+        <button class="slider-btn next-btn" aria-label="下一張">❯</button>
+
+        <div class="dots-container">
+            <!-- JavaScript 會自動生成小圓點 -->
+        </div>
+    </div>
+
+    <script src="./banner.js"></script>
+</body>
+
+</html>

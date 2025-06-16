@@ -1,0 +1,219 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    /* 可以更換成您喜歡的字體 */
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.banner-slider {
+    position: relative;
+    width: 100%;
+    /* 建議設定一個最大高度或長寬比，避免圖片過度拉伸 */
+    /* 例如：max-height: 700px; 或 aspect-ratio: 16 / 8; */
+    height: 80vh;
+    /* 佔視窗高度的80% */
+    min-height: 400px;
+    /* 最小高度 */
+    overflow: hidden;
+    /* 隱藏超出範圍的幻燈片 */
+    background-color: #333;
+    /* 圖片載入前的背景色 */
+}
+
+.slides-wrapper {
+    /* display: flex; */ /* 不再需要 flex 佈局來橫向排列幻燈片 */
+    /* width: 300%; */ /* 幻燈片將疊加，wrapper 寬度為 100% */
+    width: 100%;
+    height: 100%;
+    /* transition: transform 0.5s ease-in-out; */ /* 不再使用 transform 動畫 */
+    position: relative; /* 讓內部的 .slide 可以絕對定位 */
+}
+
+.slide {
+    /* width: calc(100% / 3); */ /* 每張幻燈片現在佔滿 wrapper */
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    /* align-items: center;  */
+    /* 如果希望文字垂直居中 */
+    /* justify-content: center; */
+    /* 如果希望文字水平居中 */
+    padding: 40px;
+    /* 內邊距，讓文字不會貼邊 */
+    /* position: relative; */ /* 改為絕對定位 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* 預設透明 */
+    visibility: hidden; /* 預設隱藏 */
+    transition: opacity 0.7s ease-in-out, visibility 0s linear 0.7s; /* 淡入淡出效果 */
+}
+
+.slide::before {
+    /* 添加一個暗色蒙版，讓文字更清晰 */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* 半透明黑色 */
+    z-index: 1;
+}
+
+.slide.active {
+    opacity: 1; /* Active 狀態時完全顯示 */
+    visibility: visible;
+    /* 確保 active slide 的 transition 立即生效 visibility */
+    transition: opacity 0.7s ease-in-out, visibility 0s linear 0s;
+}
+
+.slide-content {
+    position: relative;
+    /* 確保內容在蒙版之上 */
+    z-index: 2;
+    color: white;
+    text-align: left;
+    /* 根據原圖，文字靠左 */
+    max-width: 600px;
+    /* 限制文字區域寬度，避免太寬 */
+    align-self: flex-start;
+    /* 讓內容塊從上方開始 */
+    margin-top: 10%;
+    /* 距離頂部一些距離 */
+    margin-left: 5%;
+    /* 距離左側一些距離 */
+}
+
+.slide-content h2 {
+    font-size: 3rem;
+    /* 標題字號 */
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slide-content p {
+    font-size: 1.2rem;
+    /* 段落字號 */
+    line-height: 1.8;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+.dots-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: white;
+}
+
+/* RWD: 螢幕寬度小於 768px 時的樣式 */
+@media (max-width: 768px) {
+    .slide-content h2 {
+        font-size: 2rem;
+    }
+
+    .slide-content p {
+        font-size: 1rem;
+    }
+
+    .slider-btn {
+        padding: 10px;
+        font-size: 16px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .prev-btn {
+        left: 10px;
+    }
+
+    .next-btn {
+        right: 10px;
+    }
+
+    .slide-content {
+        margin-top: 15%;
+        margin-left: 3%;
+        max-width: 90%;
+    }
+
+    .banner-slider {
+        height: 60vh; /* 調整平板設備的高度 */
+        min-height: 300px; /* 調整平板設備的最小高度 */
+    }
+}
+
+@media (max-width: 480px) {
+    .slide-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .slide-content p {
+        font-size: 0.9rem;
+    }
+
+    .banner-slider {
+        height: 50vh; /* 調整行動裝置的高度 */
+        min-height: 250px; /* 調整行動裝置的最小高度 */
+    }
+}

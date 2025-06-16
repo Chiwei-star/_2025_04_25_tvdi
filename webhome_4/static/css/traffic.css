@@ -1,0 +1,188 @@
+/* static/css/traffic-page.css */
+
+/* 
+   This is the main container for JUST the traffic page's unique content.
+   It will sit inside the <main> tag provided by base.html.
+*/
+.traffic-page-content-area {
+    width: 80%;
+    /* Or your preferred width */
+    max-width: 960px;
+    /* Max width for readability */
+    margin: 2rem auto;
+    /* Center it within the <main> block */
+    padding: 25px;
+    background-color: #ffffff;
+    /* White background for the content block itself */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+}
+
+/* Styling for sections within the traffic content area */
+.traffic-page-content-area section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    /* Lighter separator */
+}
+
+.traffic-page-content-area section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Headings within the traffic content area */
+.traffic-page-content-area h2 {
+    color: #000000;
+    /* A common accent color, adjust as needed */
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    /* Or match your base.css h2 if preferred */
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #f58742;
+    padding-bottom: 0.5rem;
+}
+
+.traffic-page-content-area h3 {
+    color: #333;
+    /* Darker than default text for emphasis */
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.4rem;
+    /* Or match your base.css h3 */
+    display: flex;
+    align-items: center;
+}
+
+/* Icons (if you use them as previously discussed) */
+.traffic-page-content-area .icon {
+    width: 30px;
+    /* Adjusted size */
+    height: 30px;
+    margin-right: 12px;
+    fill: #f58742;
+    /* Make SVG icons use the accent color */
+}
+
+.traffic-page-content-area .icon-small {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    fill: #555;
+}
+
+/* Paragraphs and links (assuming base.css has basic styling) */
+/* You might not need these if base.css handles p and a adequately */
+.traffic-page-content-area p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    /* Good for readability */
+    color: #555;
+    /* Slightly lighter than pure black */
+}
+
+.traffic-page-content-area a {
+    color: #000000;
+    /* A slightly darker blue for links for better contrast */
+    text-decoration: none;
+}
+
+.traffic-page-content-area a:hover {
+    text-decoration: underline;
+    color: #f58742;
+}
+
+/* Specific link styled as a button */
+.traffic-page-content-area .map-link-button {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #f58742;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.traffic-page-content-area .map-link-button:hover {
+    background-color: #f58742;
+    text-decoration: none;
+}
+
+/* Map container for responsive iframe */
+.traffic-page-content-area .map-responsive-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+
+.traffic-page-content-area .map-responsive-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Styling for individual transport options */
+.traffic-page-content-area .transport-option-item {
+    margin-bottom: 1.5rem;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-left: 4px solid #f58742;
+    /* Accent on the left */
+    border-radius: 0 4px 4px 0;
+    background-color: #fdfdfd;
+    /* Very light bg for item blocks */
+}
+
+.traffic-page-content-area .transport-option-item h3 {
+    margin-top: 0;
+    /* First element in the item */
+}
+
+
+/* Responsive adjustments for the traffic content area */
+@media (max-width: 992px) {
+    .traffic-page-content-area {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .traffic-page-content-area {
+        width: 95%;
+        padding: 20px;
+        margin: 1rem auto;
+    }
+
+    .traffic-page-content-area h2 {
+        font-size: 1.6rem;
+    }
+
+    .traffic-page-content-area h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .traffic-page-content-area h2 {
+        font-size: 1.4rem;
+    }
+
+    .traffic-page-content-area h3 {
+        font-size: 1.2rem;
+    }
+
+    .traffic-page-content-area .map-link-button {
+        display: block;
+        /* Full width on small screens */
+        text-align: center;
+    }
+}

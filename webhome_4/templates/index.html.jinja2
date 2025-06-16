@@ -7,3 +7,50 @@ smart設計學院-首頁
 {{super()}}
 <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
 {% endblock %}
+
+{% block main %}
+<div class="banner-slider">
+    <div class="slides-wrapper">
+        <!-- Slide 1 -->
+        <div class="slide active"
+            style="background-image: url('{{url_for('static', filename='images/Information Engineering.jpg')}}')">
+            <div class="slide-content">
+                <h2>資訊工程</h2>
+                <p>程式不是死的語言，而是活的邏輯與創造。<br>
+                   我們教的不只是語法，更是解決問題的能力與思維。<br>
+                </p>
+            </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide"
+            style="background-image: url('{{url_for('static', filename='images/Artificial Intelligence.jpg')}}')">
+            <!-- 替換成您的第二張圖片 -->
+            <div class="slide-content">
+                <h2>人工智慧</h2>
+                <p>AI 不會取代人類，但懂 AI 的人將領先未來。<br>
+                    從入門到應用，培養跨時代的智慧與競爭力。<br>
+                    </p>
+            </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide"
+            style="background-image: url('{{url_for('static', filename='images/Computer Science.jpg')}}')">
+            <!-- 替換成您的第三張圖片 -->
+            <div class="slide-content">
+                <h2>電腦科學</h2>
+                <p>電腦科學，是讓世界運轉的隱形引擎。<br>
+                    從演算法到系統設計，打造你的核心邏輯力。<br>
+                    </p>
+            </div>
+        </div>
+    </div>
+
+    <button class="slider-btn prev-btn" aria-label="上一張">❮</button>
+    <button class="slider-btn next-btn" aria-label="下一張">❯</button>
+
+    <div class="dots-container">
+        <!-- JavaScript 會自動生成小圓點 -->
+    </div>
+</div>
+
+{% endblock %}

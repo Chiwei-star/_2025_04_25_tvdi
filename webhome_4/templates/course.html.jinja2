@@ -1,0 +1,14 @@
+{% extends "layout/base.html.jinja2" %}
+{% block title %}
+smart設計學院-課程訊息
+{% endblock %}
+
+{% block link %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static', filename='css/courses.css')}}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+{{ super() }}
+{% endblock %}

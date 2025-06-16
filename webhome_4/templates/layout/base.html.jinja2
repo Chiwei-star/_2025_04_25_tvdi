@@ -17,7 +17,7 @@
     <header class="site-header">
         <div class="container header-content">
             <a href="{{url_for('index')}}" class="logo-link">
-                <img src="{{url_for('static', filename='images/logo.jpg')}}" alt="smart設計學院" class="logo-image">
+                <img src="{{url_for('static', filename='images/logo.png')}}" alt="smart設計學院" class="logo-image">
             </a>
 
             <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -26,9 +26,9 @@
 
             <nav class="main-navigation">
                 <ul class="nav-list">
-                    <li><a href="#news">最新消息</a></li>
-                    <li><a href="#courses">課程訊息</a></li>
-                    <li><a href="#traffic">交通資訊</a></li>
+                    <li><a href="{{url_for('news')}}">最新消息</a></li>
+                    <li><a href="{{url_for('course')}}">課程訊息</a></li>
+                    <li><a href="{{url_for('traffic')}}">交通資訊</a></li>
 
                 </ul>
             </nav>
@@ -46,7 +46,7 @@
     <footer class="site-footer">
         <div class="container footer-content">
             <div class="footer-column footer-info">
-                <img src="{{url_for('static', filename='images/logo.jpg')}}" alt="Smart設計學院 Logo" class="footer-logo">
+                <img src="{{url_for('static', filename='images/logo.png')}}" alt="Smart設計學院 Logo" class="footer-logo">
                 <div class="social-icons">
                     <a href="#" aria-label="Facebook" title="Facebook">
                         <svg viewBox="0 0 24 24">

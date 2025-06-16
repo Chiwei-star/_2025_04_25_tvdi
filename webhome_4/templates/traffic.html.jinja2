@@ -1,0 +1,91 @@
+{% extends "layout/base.html.jinja2" %}
+{% block title %}
+smart設計學院-交通資訊
+{% endblock %}
+
+{% block link %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static', filename='css/traffic.css')}}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+    <div class="traffic-page-content-area"> <!-- Wrapper for traffic-specific content -->
+    
+        <section id="address">
+            <h2>地址</h2>
+            <p>111台北市士林區士東路301號</p>
+            <a href="https://maps.google.com/?q=111台北市士林區士東路301號" target="_blank" class="map-link-button">在 Google 地圖上查看</a>
+        </section>
+    
+        <section id="map">
+            <h2>地理位置圖</h2>
+            <div class="map-responsive-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.6113932870994!2d121.53577107537916!3d25.115012777764015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ac2a6d916fbb%3A0xf3c18549d04f207d!2z6Ie65YyX5biC6IG36IO955m85bGV5a246Zmi!5e0!3m2!1szh-TW!2stw!4v1750020678410!5m2!1szh-TW!2stw"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" title="地點地圖"></iframe>
+            </div>
+        </section>
+    
+        <section id="public-transport">
+            <h2>大眾運輸</h2>
+    
+            <div class="transport-option-item">
+                <h3>捷運</h3>
+                <p>
+                    搭乘 捷運淡水信義線 至 捷運芝山站 或 捷運士林站，<br>
+                    由 1號出口 出站後，轉乘公車路線 紅15 至 職能發展學院 即可抵達。
+                </p>
+                <p>
+                    更多捷運資訊：<a href="https://www.metro.taipei/" target="_blank">台北捷運公司</a>
+                </p>
+            </div>
+    
+            <div class="transport-option-item">
+                <h3>公車</h3>
+                <p>
+                    可搭乘以下公車路線至職能發展學院 或 天母棒球場站 等鄰近站牌：<br>
+                     203, 279, 小11, 紅15。
+                </p>
+                <p>
+                    更多公車資訊：<a href="https://ebus.gov.taipei/" target="_blank">台北市公車動態資訊系統</a>
+                </p>
+            </div>
+        </section>
+    
+        <section id="driving">
+            <h2>自行開車</h2>
+            <div class="transport-option-item"> <!-- Reusing class for consistent block styling -->
+                <p>
+                    <b>由國道一號中山高前來：</b><br>
+                    北上：下 重慶北路交流道(往士林方向)，過百齡橋後直行中正路...<br>
+                    南下：下 台北交流道(重慶北路出口)，往士林方向...
+                </p>
+                <p>
+                    <b>由市區方向前來：</b><br>
+                    - 可經由中山北路往北行駛...
+                </p>
+            </div>
+            <div class="transport-option-item">
+                <h3>停車資訊</h3>
+                <p>
+                    本學院附設停車場，請由大門進入。<br>
+                    鄰近停車場：天母運動公園停車場、大葉高島屋百貨停車場。
+                </p>
+            </div>
+        </section>
+    
+        <section id="contact">
+            <h2>聯絡我們</h2>
+            <div class="transport-option-item">
+                <p>
+                    若您在交通上有任何疑問，歡迎隨時與我們聯繫：<br>
+                    電話：09876543321<br>
+                    電子郵件：<a href="#">123@smartdesign.com</a>
+                </p>
+            </div>
+        </section>
+    
+    </div> <!-- End .traffic-page-content-area -->
+{% endblock %}
