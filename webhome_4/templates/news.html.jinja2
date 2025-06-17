@@ -10,4 +10,27 @@ smart設計學院-最新消息
 {% endblock %}
 
 {% block main %}
+<div class="accordion-container">
+    <h1>最新消息</h1>
+    <!-- 項目 1 (預設展開) -->
+    {% for row in rows%}
+    <div class="accordion-item">
+        <button class="accordion-header " id="acc-header-1" aria-controls="acc-content-1">
+            <span class="accordion-title">{{loop.index ~ '. ' ~ row[1]}}</span>
+            <span class="accordion-date">{{row[2].strftime("%Y-%m-%d")}}</span>
+            <span class="accordion-icon"></span>
+        </button>
+        <div class="accordion-content" id="acc-content-1" role="region" aria-labelledby="acc-header-1">
+            {% if row[3] is not none %}
+            {% for line in row[3].split("\n") %}
+            <p>{{line}}</p>
+            {% endfor %}
+            {% else %}
+            <p>沒有內容。</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<script src="{{url_for('static', filename='js/news.js')}}"></script>
 {% endblock %}

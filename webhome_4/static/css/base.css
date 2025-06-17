@@ -78,6 +78,7 @@ body {
 /* Mobile Navigation Toggle (Hamburger) */
 .nav-toggle {
     display: none;
+    width: 40px;
     /* Hidden by default, shown on mobile */
     background: none;
     border: none;
@@ -130,7 +131,7 @@ body {
     top: 0;
 }
 
-/* Footer Styles */
+/* ---------Footer Styles---------- */
 .site-footer {
     background-color: #4a4a4a;
     /* Dark grey from image */
@@ -292,6 +293,7 @@ body {
         display: block;
         /* Show hamburger */
         order: 1;
+        margin-left: auto; /* 將漢堡選單按鈕推到右側 */
         /* Ensure toggle is after logo if needed, but space-between handles it*/
     }
 

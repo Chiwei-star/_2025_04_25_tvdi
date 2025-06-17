@@ -5,17 +5,13 @@
    It will sit inside the <main> tag provided by base.html.
 */
 .traffic-page-content-area {
-    width: 80%;
-    /* Or your preferred width */
-    max-width: 960px;
     /* Max width for readability */
-    margin: 2rem auto;
+    margin:auto;
     /* Center it within the <main> block */
     padding: 25px;
     background-color: #ffffff;
     /* White background for the content block itself */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    border-radius: 8px;
 }
 
 /* Styling for sections within the traffic content area */
