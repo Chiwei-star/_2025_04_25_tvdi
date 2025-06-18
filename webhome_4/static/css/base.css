@@ -313,6 +313,8 @@ body {
     .main-navigation.active {
         max-height: 500px;
         /* Or enough height to show all items */
+        z-index: 1001; /* 添加這行 */
+        position: relative; /* 確保 z-index 生效，如果沒有設定 position */
     }
 
     .main-navigation .nav-list {
