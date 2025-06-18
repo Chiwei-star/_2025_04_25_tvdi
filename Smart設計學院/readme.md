@@ -23,7 +23,10 @@ https://tvdi-2025-web-assignment.onrender.com/
 - 課程內容：主要開課分為『資訊工程』、『人工智慧』、『電腦科學』共21個基礎與進階的課程。
 - 交通資訊：提供本學院地理位置，以及大眾運輸工具的建議，例如：捷運、公車、自行開車及停車資訊。歡迎為課程有興趣的民眾，聯絡我們。
 
-![alt text](\img\smart設計學院1_homepage.png)
-![alt text](\img\smart設計學院2_news.jpg)
-![alt text](\img\smart設計學院3_courses.jpg)
-![alt text](\img\smart設計學院4_traffic.jpg)
+![alt text](./img/smart設計學院1_homepage.png)
+
+![alt text](./img/smart設計學院2_news.png/)
+
+![alt text](./img/smart設計學院3_courses.png)
+
+![alt text](./img/smart設計學院3_courses.png)
