@@ -84,6 +84,7 @@ body {
     border: none;
     cursor: pointer;
     padding: 10px;
+
 }
 
 .hamburger-icon {
@@ -293,8 +294,10 @@ body {
         display: block;
         /* Show hamburger */
         order: 1;
-        margin-left: auto; /* 將漢堡選單按鈕推到右側 */
+        margin-left: auto;
+        /* 將漢堡選單按鈕推到右側 */
         /* Ensure toggle is after logo if needed, but space-between handles it*/
+        margin-top: 5px;
     }
 
     .main-navigation {
@@ -313,8 +316,7 @@ body {
     .main-navigation.active {
         max-height: 500px;
         /* Or enough height to show all items */
-        z-index: 1001; /* 添加這行 */
-        position: relative; /* 確保 z-index 生效，如果沒有設定 position */
+        display: block;
     }
 
     .main-navigation .nav-list {

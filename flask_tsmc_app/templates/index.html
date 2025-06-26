@@ -1,0 +1,150 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSMC 技術分析與預測工具</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 2rem;
+        }
+
+        .chart-container {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            text-align: center;
+        }
+
+        .prediction-result {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border: 2px solid #0d6efd;
+            border-radius: 10px;
+            background-color: #e7f1ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>TSMC 技術分析與預測工具</h1>
+        <hr>
+
+        <!-- 圖表區域 -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="chart-container">
+                    {{ price_chart_html|safe }}
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="chart-container">
+                    {{ macd_chart_html|safe }}
+                </div>
+            </div>
+        </div>
+
+        <!-- 輸入與預測區域 -->
+        <h3 class="mt-4">輸入今日技術指標預測明日漲跌</h3>
+        <form action="/predict" method="post">
+            <div class="row g-3">
+                <!-- 左側輸入欄 -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="close" class="form-label">今日收盤價</label>
+                        <input type="number" step="0.01" class="form-control" id="close" name="close"
+                            value="{{ inputs.close }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="close_prev" class="form-label">昨日收盤價</label>
+                        <input type="number" step="0.01" class="form-control" id="close_prev" name="close_prev"
+                            value="{{ inputs.close_prev }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rsi" class="form-label">RSI</label>
+                        <input type="number" step="0.01" class="form-control" id="rsi" name="rsi"
+                            value="{{ inputs.rsi }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="macd" class="form-label">MACD</label>
+                        <input type="number" step="0.01" class="form-control" id="macd" name="macd"
+                            value="{{ inputs.macd }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="macd_signal" class="form-label">MACD Signal</label>
+                        <input type="number" step="0.01" class="form-control" id="macd_signal" name="macd_signal"
+                            value="{{ inputs.macd_signal }}" required>
+                    </div>
+                </div>
+                <!-- 右側輸入欄 -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="volume" class="form-label">今日成交量</label>
+                        <input type="number" class="form-control" id="volume" name="volume" value="{{ inputs.volume }}"
+                            required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="volume_prev" class="form-label">昨日成交量</label>
+                        <input type="number" class="form-control" id="volume_prev" name="volume_prev"
+                            value="{{ inputs.volume_prev }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ma5" class="form-label">MA5</label>
+                        <input type="number" step="0.01" class="form-control" id="ma5" name="ma5"
+                            value="{{ inputs.ma5 }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ma10" class="form-label">MA10</label>
+                        <input type="number" step="0.01" class="form-control" id="ma10" name="ma10"
+                            value="{{ inputs.ma10 }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bb_upper" class="form-label">BB_Upper</label>
+                        <input type="number" step="0.01" class="form-control" id="bb_upper" name="bb_upper"
+                            value="{{ inputs.bb_upper }}" required>
+                    </div>
+                </div>
+            </div>
+            <div class="d-grid gap-2 mt-4">
+                <button type="submit" class="btn btn-primary btn-lg">預測明日漲跌</button>
+            </div>
+        </form>
+
+        <!-- 預測結果顯示區域 -->
+        {% if prediction_text %}
+        <div class="prediction-result">
+            <h2>預測結果</h2>
+            <h3 class="text-center">預測: <span class="fw-bold">{{ prediction_text }}</span> | 信心度: <span
+                    class="fw-bold">{{ confidence }}</span></h3>
+            <hr>
+            <h4 class="mt-4">輸入數據</h4>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ input_df_html|safe }}
+                </div>
+                <div class="col-md-6">
+                    <details>
+                        <summary><strong>點此查看標準化後數據</strong></summary>
+                        {{ scaled_df_html|safe }}
+                    </details>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</body>
+
+</html>

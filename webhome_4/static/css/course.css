@@ -62,12 +62,16 @@
     /* 輕微縮放 */
 }
 
+.tab-item:focus {
+    outline: 2px solid #B5B3B3;
+    /* 當分頁被聚焦時，添加一個輪廓以提高可訪問性 */
+}
+
 .tab-line {
     width: 100%;
     height: 1px;
     background-color: #000000;
-    background-color: #D1D5DB;
-    /* MODIFIED: Lighter grey for a softer look */
+    background-color: #D1D5DB; /* 已修改：使用較淺的灰色以獲得更柔和的外觀 */
 }
 
 .testimonial-grid {
@@ -75,13 +79,13 @@
     max-width: 100%;
     /* Ensure it doesn't overflow smaller viewports */
     margin: 0 auto;
-    padding: 64px;
+    padding: 64px; /* 確保它不會溢出較小的視口 */
     background-color: #FFFFFF;
     padding: 48px;
-    /* MODIFIED: Adjusted padding */
+    /* 已修改：調整了內距 */
     background-color: #f4f6f8;
-    /* MODIFIED: Light background for the section */
-    /* Overall component background */
+    /* 已修改：區塊使用淺色背景 */
+    /* 整體組件背景 */
     box-sizing: border-box;
 }
 
@@ -89,7 +93,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    /* MODIFIED: More responsive columns */
+    /* 已修改：更具響應性的列 */
     gap: 48px;
 }
 
@@ -98,75 +102,104 @@ div.card-container {
     border-radius: 15px;
     padding: 20px;
     background-color: #FFFFFF;
-    /* ADDED: Card background */
+    /* 已新增：卡片背景 */
     border: 1px solid #E0E0E0;
-    /* MODIFIED: Lighter border */
+    /* 已修改：較淺的邊框 */
     border-radius: 12px;
-    /* MODIFIED: Softer radius */
+    /* 已修改：更柔和的圓角 */
     padding: 24px;
-    /* MODIFIED: Adjusted padding */
+    /* 已修改：調整了內距 */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    /* ADDED: Subtle shadow */
+    /* 已新增：細微陰影 */
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    /* ADDED: Hover transition */
+    /* 已新增：懸停過渡效果 */
+    position: relative;
 }
 
 div.card-container:hover {
     transform: translateY(-5px);
-    /* ADDED: Lift card on hover */
+    /* 已新增：懸停時卡片上浮效果 */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-    /* ADDED: Enhanced shadow on hover */
+    /* 已新增：懸停時增強陰影效果 */
 }
+
+.card{
+     }
 
 .card-category {
     color: #757575;
     display: inline-block;
-    /* ADDED: For padding and margin */
+    /* 已新增：用於內邊距和外邊距 */
     padding: 5px 10px;
-    /* ADDED: Badge padding */
+    /* 已新增：徽章內邊距 */
     font-size: 0.75rem;
-    /* MODIFIED: Smaller font for category */
+    /* 已修改：分類使用較小字體 */
     font-weight: 500;
-    /* ADDED: Medium weight */
+    /* 已新增：中等字重 */
     color: #555;
-    /* MODIFIED: Darker grey text */
+    /* 已修改：較深的灰色文字 */
     background-color: #e9ecef;
-    /* ADDED: Light grey badge background */
+    /* 已新增：淺灰色徽章背景 */
     border-radius: 4px;
-    /* ADDED: Slightly rounded corners for badge */
+    /* 已新增：徽章使用微圓角 */
     margin-bottom: 12px;
-    /* ADDED: Space below category */
+    /* 已新增：分類下方間距 */
+    z-index: 2; /* 確保分類在背景圖片等元素之上 */
+    color: #333333; /* 已修改：加深文字顏色以提高對比度 */
 }
 
 .card-title {
     margin: 10px;
     margin: 0 0 15px 0;
-    /* MODIFIED: Adjusted margin */
+    /* 已修改：調整了外邊距 */
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    /* MODIFIED: Semi-bold */
+    /* 已修改：半粗體 */
     font-size: 1.25rem;
-    /* MODIFIED: Slightly larger */
+    /* 已修改：略微增大 */
     line-height: 1.4;
-    color: #333333;
-    /* MODIFIED: Darker color for better contrast */
+    color: #ffffff;
+    /* 已修改：使用較深顏色以獲得更好對比度 */
+    /* 說明：顏色保持 #ffffff 白色，將通過文字陰影和背景調整來確保可見性 */
+    height: 100px;
+    z-index: 2; /* 確保文字在背景圖片上方 */
+    position: relative; /* 設定相對定位，為子元素 .card-title-background 定位 */
+    padding: 10px; /* 在標題內部增加內邊距 */
+    box-sizing: border-box; /* 讓 padding 不會增加元素總高度 */
+    display: flex; /* 使用 flex 佈局 */
+    align-items: center; /* 垂直居中文字 */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.6); /* 新增文字陰影以提高可讀性 */
 }
+
+.card-title-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* 已修改：使其填滿整個 .card-title 區域 */
+    background-size: cover; /* 確保圖片覆蓋整個區域 */
+    background-position: center; /* 圖片居中 */
+    opacity: 0.7; /* 調整透明度 */
+    z-index: -1; /* 已修改：放在 .card-title 文字內容的後面 */
+ }
+
 
 .card-info-item {
     margin: 5px;
     text-indent: 10px;
     margin: 6px 0;
-    /* MODIFIED: Adjusted margin */
+    /* 已修改：調整了外邊距 */
     text-indent: 0px;
-    /* MODIFIED: Removed indent for cleaner look */
+    /* 已修改：移除縮排以獲得更簡潔外觀 */
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 0.9rem;
-    /* MODIFIED: Standard text size */
+    /* 已修改：標準文字大小 */
     line-height: 1.6;
-    /* ADDED: Improved line height for readability */
+    /* 已新增：改善行高以提高可讀性 */
     color: #454545;
-    /* MODIFIED: Slightly darker grey for info text */
+    /* 已修改：資訊文字使用略深的灰色 */
+    z-index: index 0;
 }
 
 .testimonial-card {
@@ -177,7 +210,7 @@ div.card-container:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* Helps if card content heights vary */
+    /* 如果卡片內容高度不同，這會有所幫助 */
     box-sizing: border-box;
 }
 
@@ -209,12 +242,12 @@ div.card-container:hover {
     justify-content: center;
     overflow: hidden;
     flex-shrink: 0;
-    /* Prevent avatar from shrinking if author-block width is constrained */
+    /* 防止在 author-block 寬度受限時頭像縮小 */
 }
 
 .avatar span {
     font-size: calc(40px * 0.5);
-    /* Adjust letter size within avatar */
+    /* 調整頭像內的字母大小 */
     font-weight: 600;
     color: #FFFFFF;
 }
@@ -228,11 +261,11 @@ div.card-container:hover {
 .author-info {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    /* Spacing between title and description */
+    gap: 2px; /* 標題和描述之間的間距 */
     /* The text will wrap if it exceeds the available space within the 139px author-block */
+    /* 如果文本超出 139px author-block 內的可用空間，則會換行 */
     min-width: 0;
-    /* Allow text to shrink and wrap properly in flex item */
+    /* 允許文本在 flex 項目中正確縮小和換行 */
 }
 
 .author-title {
@@ -243,11 +276,11 @@ div.card-container:hover {
     color: #757575;
     margin: 0;
     white-space: nowrap;
-    /* Prevent wrapping if desired, or remove for wrapping */
+    /* 如果需要，防止換行，或移除以允許換行 */
     overflow: hidden;
-    /* Example: if text should be truncated */
+    /* 範例：如果文本應被截斷 */
     text-overflow: ellipsis;
-    /* Example: if text should be truncated */
+    /* 範例：如果文本應被截斷 */
 }
 
 .author-description {
@@ -343,7 +376,7 @@ div.card-container:hover {
 
     .card-grid {
         grid-template-columns: 1fr;
-        /* 1 column layout */
+        /* 1 欄佈局 */
         gap: 24px;
     }
 

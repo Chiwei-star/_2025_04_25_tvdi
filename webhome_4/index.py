@@ -73,11 +73,11 @@ def course(course_types):
         items = course_data[start:end]  # 取得該頁資料
 
     return render_template("course.html.jinja2",
-                           kinds=kinds,
-                           course_data=items,
-                           page=page,
-                           total_pages=total_pages)
-
+                       kinds=kinds,
+                       course_data=items,
+                       page=page,
+                       total_pages=total_pages,
+                       current_course_type=course_types) 
 @app.route("/traffic")
 def traffic():
     return render_template("traffic.html.jinja2")

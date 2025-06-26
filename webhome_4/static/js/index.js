@@ -1,116 +1,96 @@
-// ------------header------------ //
+// index.js - 用於特定頁面功能（如橫幅等）的 JavaScript。
+
 document.addEventListener('DOMContentLoaded', function () {
-    const navToggle = document.querySelector('.nav-toggle');
-    const mainNavigation = document.querySelector('.main-navigation');
-
-    if (navToggle && mainNavigation) {
-        navToggle.addEventListener('click', function () {
-            // Toggle 'active' class on the navigation menu
-            mainNavigation.classList.toggle('active');
-
-            // Toggle 'active' class on the hamburger button itself (for icon animation)
-            navToggle.classList.toggle('active');
-
-            // Update ARIA attribute for accessibility
-            const isExpanded = mainNavigation.classList.contains('active');
-            navToggle.setAttribute('aria-expanded', isExpanded);
-        });
-    }
-});
-
-// ------------banner------------ //
-document.addEventListener('DOMContentLoaded', function () {
-    const slidesWrapper = document.querySelector('.slides-wrapper');
-    const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const dotsContainer = document.querySelector('.dots-container');
-
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-
-    // 設定 wrapper 寬度
-    // slidesWrapper.style.width = `${totalSlides * 100}%`; // 不再需要，因為幻燈片將疊加顯示
-    // 每個 slide 的寬度已在 CSS 中用 calc(100% / 3) 設定，這裡不需要再動態設定
-
-    // 創建小圓點
-    for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement('span');
-        dot.classList.add('dot');
-        dot.addEventListener('click', () => {
-            showSlide(i);
-        });
-        dotsContainer.appendChild(dot);
-    }
-    const dots = document.querySelectorAll('.dot');
-    dots[0].classList.add('active'); // 初始化第一個點為 active
-
-    function updateDots(index) {
-        dots.forEach(dot => dot.classList.remove('active'));
-        dots[index].classList.add('active');
-    }
-
-    function showSlide(index) {
-        // 邊界處理
-        if (index >= totalSlides) {
-            currentIndex = 0;
-        } else if (index < 0) {
-            currentIndex = totalSlides - 1;
-        } else {
-            currentIndex = index;
-        }
-
-        // 移除舊的 transform 樣式，改為控制 active class
-        // const offset = -currentIndex * (100 / totalSlides); // 計算位移百分比
-        // slidesWrapper.style.transform = `translateX(${offset}%)`;
-
-        slides.forEach(s => s.classList.remove('active'));
-        slides[currentIndex].classList.add('active');
-        updateDots(currentIndex);
-    }
-
-    nextBtn.addEventListener('click', () => {
-        showSlide(currentIndex + 1);
-    });
-
-    prevBtn.addEventListener('click', () => {
-        showSlide(currentIndex - 1);
-    });
-
-    // 可選：自動播放
-    let autoPlayInterval;
-    function startAutoPlay(delay = 5000) { // 預設5秒切換一次
-        stopAutoPlay(); // 先停止，避免重複啟動
-        autoPlayInterval = setInterval(() => {
-            showSlide(currentIndex + 1);
-        }, delay);
-    }
-
-    function stopAutoPlay() {
-        clearInterval(autoPlayInterval);
-    }
-
-    // 啟動自動播放
-    startAutoPlay();
-
-    // 可選：滑鼠移入時停止自動播放，移出時恢復
+    // ------------橫幅------------ //
     const sliderContainer = document.querySelector('.banner-slider');
-    sliderContainer.addEventListener('mouseenter', stopAutoPlay);
-    sliderContainer.addEventListener('mouseleave', startAutoPlay);
 
+    // 如果橫幅容器存在，則初始化橫幅邏輯
+    if (sliderContainer) {
+        const slidesWrapper = sliderContainer.querySelector('.slides-wrapper');
+        const slides = sliderContainer.querySelectorAll('.slide');
+        const prevBtn = sliderContainer.querySelector('.prev-btn');
+        const nextBtn = sliderContainer.querySelector('.next-btn');
+        const dotsContainer = sliderContainer.querySelector('.dots-container');
 
-    // 初始化第一張幻燈片
-    showSlide(0);
-});
+        // 確保所有必要的橫幅內部元素都存在
+        if (slidesWrapper && slides.length > 0 && prevBtn && nextBtn && dotsContainer) {
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            const AUTOPLAY_DELAY = 5000; // 定義自動播放延遲時間為常數
 
-// ------------footer------------ //
-document.addEventListener('DOMContentLoaded', function () {
-    // Set current year in the footer
-    const yearSpan = document.getElementById('current-year');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
+            // 創建指示點
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                dot.addEventListener('click', () => {
+                    showSlide(i);
+                });
+                dotsContainer.appendChild(dot);
+            }
+            const dots = dotsContainer.querySelectorAll('.dot');
+            if (dots.length > 0) { // 確保在存取之前指示點存在
+                dots[0].classList.add('active');
+            }
+
+            function updateDots(index) {
+                if (dots.length > 0 && dots[index]) { // 確保指示點和特定的指示點存在
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[index].classList.add('active');
+                }
+            }
+
+            function showSlide(index) {
+                if (slides.length === 0) return; // 如果沒有幻燈片則退出
+
+                // 邊界檢查
+                if (index >= totalSlides) {
+                    currentIndex = 0;
+                } else if (index < 0) {
+                    currentIndex = totalSlides - 1;
+                } else {
+                    currentIndex = index;
+                }
+
+                slides.forEach(s => s.classList.remove('active'));
+                if (slides[currentIndex]) { // 確保 currentIndex 處的幻燈片存在
+                    slides[currentIndex].classList.add('active');
+                }
+                updateDots(currentIndex);
+            }
+
+            nextBtn.addEventListener('click', () => {
+                showSlide(currentIndex + 1);
+            });
+
+            prevBtn.addEventListener('click', () => {
+                showSlide(currentIndex - 1);
+            });
+
+            // 自動播放
+            let autoPlayInterval;
+            function startAutoPlay() { // 移除 delay 參數，使用常數 AUTOPLAY_DELAY
+                stopAutoPlay(); // 清除現有的間隔
+                autoPlayInterval = setInterval(() => {
+                    showSlide(currentIndex + 1);
+                }, AUTOPLAY_DELAY); // 使用定義好的常數延遲時間
+            }
+
+            function stopAutoPlay() {
+                clearInterval(autoPlayInterval);
+            }
+
+            startAutoPlay();
+
+            // 滑鼠懸停時暫停自動播放
+            sliderContainer.addEventListener('mouseenter', stopAutoPlay);
+            sliderContainer.addEventListener('mouseleave', startAutoPlay);
+
+            // 初始化第一張幻燈片
+            showSlide(0);
+        } else {
+            // console.warn("橫幅初始化失敗：一個或多個橫幅內部元素缺失。");
+        }
+    } else {
+        // console.log("在此頁面上找不到橫幅滑塊容器。跳過 index.js 的橫幅初始化。");
     }
-
-    // You can add more footer-specific JavaScript here if needed in the future
-    console.log("Footer JS loaded and current year set.");
 });

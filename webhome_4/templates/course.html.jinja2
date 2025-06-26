@@ -12,12 +12,13 @@ smart設計學院-課程訊息
 {% block main %}
 <div class="course-tabs">
     <div class="tab-container">
-        {# 假設您的後端路由傳遞了一個變數，例如 `current_kind_slug`， #}
-        {# 其值為 '一般課程' 或 '進階課程'，用以表示當前活動的分頁。 #}
-        {% for kind in kinds %}
-        {% set tab_slug = '資訊工程' if loop.first else '人工智慧' if loop.second else '電腦科學' %} {# 根據現有邏輯確定此分頁的 slug #}
-        <a href="/course/{{ tab_slug }}"><button class="tab-item {{ 'active' if tab_slug == current_kind_slug }}">{{
-                kind }}</button></a>
+        {% for kind_item in kinds %} {# 改個名字避免和外層 course_data 的 course 衝突，雖然此處沒問題 #}
+        {# 直接使用 kind_item 作為 slug 和判斷 active 的依據 #}
+        <a href="{{ url_for('course', course_types=kind_item) }}">
+            <button class="tab-item {{ 'active' if kind_item == current_course_type else '' }}">
+                {{ kind_item }}
+            </button>
+        </a>
         {% endfor %}
     </div>
     <div class="tab-line"></div>
@@ -28,7 +29,10 @@ smart設計學院-課程訊息
         <div class="card-container">
             <div class="card">
                 <p class="card-category">{{course[7]}}</p>
-                <h3 class="card-title">{{course[0]}}</h3>
+                <h3 class="card-title">
+                    <div class="card-title-background" style="background-image: url('{{ url_for('static', filename='images/' + current_course_type + '.jpg') }}');"></div>
+                    {{course[0]}} <!-- 您的標題文字 -->
+                </h3>
                 <p class="card-info-item">授課教師:{{course[1]}}</p>
                 <p class="card-info-item">進修人數:{{course[2]}}</p>
                 <p class="card-info-item">進修時數:{{course[3]}}</p>
@@ -42,7 +46,8 @@ smart設計學院-課程訊息
     <div>
         <ul class="pagination">
             {% if page > 1 %}
-            <li><a href="{{ url_for('course', page=page-1) }}">上一頁</a></li>
+            {# 傳遞 current_course_type 或 course_types (在 template 中你從 flask 收到的那個變數名稱) #}
+            <li><a href="{{ url_for('course', course_types=current_course_type, page=page-1) }}">上一頁</a></li>
             {% else %}
             <li class="disabled"><span>上一頁</span></li>
             {% endif %}
@@ -51,21 +56,15 @@ smart設計學院-課程訊息
             {% if p == page %}
             <li class="active"><span>{{ p }}</span></li>
             {% else %}
-            <li><a href="{{ url_for('course', page=p) }}">{{ p }}</a></li>
+            <li><a href="{{ url_for('course', course_types=current_course_type, page=p) }}">{{ p }}</a></li>
             {% endif %}
             {% endfor %}
 
-            {% if page < total_pages %} <li><a href="{{ url_for('course', page=page+1) }}">下一頁</a></li>
+            {% if page < total_pages %} <li><a
+                    href="{{ url_for('course', course_types=current_course_type, page=page+1) }}">下一頁</a></li>
                 {% else %}
                 <li class="disabled"><span>下一頁</span></li>
                 {% endif %}
-        </ul>
-
-        <!-- 顯示該頁資料 -->
-        <ul>
-            {% for item in items %}
-            <li>{{ item }}</li>
-            {% endfor %}
         </ul>
     </div>
 </section>

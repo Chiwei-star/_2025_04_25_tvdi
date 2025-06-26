@@ -6,12 +6,14 @@
 */
 .traffic-page-content-area {
     /* Max width for readability */
-    margin:auto;
+    margin: auto 10%;
     /* Center it within the <main> block */
     padding: 25px;
     background-color: #ffffff;
     /* White background for the content block itself */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    width: 1200px;
+    max-width: 100%;
 }
 
 /* Styling for sections within the traffic content area */
@@ -148,6 +150,8 @@
 @media (max-width: 992px) {
     .traffic-page-content-area {
         width: 90%;
+        /* 修正：將左右邊距設為 auto 使其居中，並設定上下邊距 */
+        margin: 1.5rem auto;
     }
 }
 
@@ -179,6 +183,196 @@
     .traffic-page-content-area .map-link-button {
         display: block;
         /* Full width on small screens */
+        text-align: center;
+    }
+}/* static/css/traffic-page.css */
+
+/*
+   這是專為交通頁面獨特內容設計的主要容器。
+   它將位於 base.html 提供的 <main> 標籤內部。
+*/
+.traffic-page-content-area {
+    max-width: 960px;
+    /* 新增：在大螢幕上設定最大寬度以提升可讀性 */
+    margin: auto;
+    /* 將其置中於 <main> 區塊內 */
+    padding: 25px;
+    background-color: #ffffff;
+    /* 內容區塊本身的白色背景 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* 交通內容區域內各區塊的樣式 */
+.traffic-page-content-area section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+    /* 較淺的分隔線 */
+}
+
+.traffic-page-content-area section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* 交通內容區域內的標題 */
+.traffic-page-content-area h2 {
+    color: #000000;
+    /* 常用的強調色，可根據需要調整 */
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    /* 或匹配您 base.css 中的 h2 樣式 */
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #f58742;
+    /* 強調色底部邊框 */
+    padding-bottom: 0.5rem;
+}
+
+.traffic-page-content-area h3 {
+    color: #333;
+    /* 比預設文字顏色深，用於強調 */
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.4rem;
+    /* 或匹配您 base.css 中的 h3 樣式 */
+    display: flex;
+    align-items: center;
+}
+
+/* 圖示 (如果您如先前討論般使用它們) */
+.traffic-page-content-area .icon {
+    width: 30px;
+    /* 調整後的大小 */
+    height: 30px;
+    margin-right: 12px;
+    fill: #f58742;
+    /* 使 SVG 圖示使用強調色 */
+}
+
+.traffic-page-content-area .icon-small {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    fill: #555;
+}
+
+/* 段落和連結 (假設 base.css 已有基本樣式) */
+/* 如果 base.css 已充分處理 p 和 a 標籤，您可能不需要這些 */
+.traffic-page-content-area p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    /* 有助於可讀性 */
+    color: #555;
+    /* 比純黑色稍淺 */
+}
+
+.traffic-page-content-area a {
+    color: #000000;
+    /* 使用與h2相同的黑色，或選擇一個清晰的連結顏色 */
+    text-decoration: none;
+}
+
+.traffic-page-content-area a:hover {
+    text-decoration: underline;
+    color: #f58742;
+    /* 滑鼠懸停時使用強調色 */
+}
+
+/* 特定連結樣式，使其看起來像按鈕 */
+.traffic-page-content-area .map-link-button {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #f58742;
+    color: white;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.traffic-page-content-area .map-link-button:hover {
+    background-color: #e07029;
+    /* 滑鼠懸停時顏色可以略深一點 */
+    text-decoration: none;
+}
+
+/* 用於響應式 iframe 的地圖容器 */
+.traffic-page-content-area .map-responsive-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 長寬比 */
+    height: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+
+.traffic-page-content-area .map-responsive-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 個別交通選項的樣式 */
+.traffic-page-content-area .transport-option-item {
+    margin-bottom: 1.5rem;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-left: 4px solid #f58742;
+    /* 左側強調線 */
+    border-radius: 0 4px 4px 0;
+    background-color: #fdfdfd;
+    /* 選項區塊的極淺背景色 */
+}
+
+.traffic-page-content-area .transport-option-item h3 {
+    margin-top: 0;
+    /* 項目中的第一個元素 */
+}
+
+
+/* 交通內容區域的響應式調整 */
+@media (max-width: 992px) {
+    .traffic-page-content-area {
+        /* max-width 仍然適用，此寬度將在螢幕 < 960px 但 > 768px 時使用 */
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .traffic-page-content-area {
+        width: 95%;
+        /* 實際上將是視口寬度的 95% */
+        padding: 20px;
+        margin: 1rem auto;
+        /* 確保仍然置中 */
+    }
+
+    .traffic-page-content-area h2 {
+        font-size: 1.6rem;
+    }
+
+    .traffic-page-content-area h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .traffic-page-content-area h2 {
+        font-size: 1.4rem;
+    }
+
+    .traffic-page-content-area h3 {
+        font-size: 1.2rem;
+    }
+
+    .traffic-page-content-area .map-link-button {
+        display: block;
+        /* 在小螢幕上佔滿寬度 */
         text-align: center;
     }
 }

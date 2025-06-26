@@ -166,6 +166,80 @@ html {
     background-color: white;
 }
 
+.intro-text {
+    margin-bottom: 40px;
+    /* Space after the intro */
+    border-bottom: 1px solid #e0e0e0;
+    /* Separator line */
+    padding-bottom: 0 30px 20px;
+    margin: 30px;
+}
+
+.intro-text p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 1em;
+}
+
+.intro-text p:last-child {
+    margin-bottom: 0;
+    font-style: italic;
+    color: #d1a162;
+    /* A welcoming blue for the last paragraph */
+}
+
+/* Course Introduction Section Styling */
+.course-intro {
+    display: grid;
+    /* Using grid for layout */
+    gap: 30px;
+    /* Space between course items */
+}
+
+.course-intro-text {
+    background-color: #f9f9f9;
+    /* Slightly off-white for course cards */
+    padding: 25px;
+    border-radius: 6px;
+    border-left: 5px solid #f58742;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.course-intro-text:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.course-intro-text h2 {
+    font-size: 1.75em;
+    color: #2c3e50;
+    /* Dark blue-gray for headings */
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    /* border-bottom: 2px solid #3498db; */
+    /* Alternative heading underline */
+}
+
+.course-intro-text p {
+    font-size: 1em;
+    color: #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .page-container {
+        padding: 20px;
+    }
+
+    .intro-text p {
+        font-size: 1em;
+    }
+
+    .course-intro-text h2 {
+        font-size: 1.5em;
+    }
+}
+
 /* RWD: 螢幕寬度小於 768px 時的樣式 */
 @media (max-width: 768px) {
     .slide-content h2 {

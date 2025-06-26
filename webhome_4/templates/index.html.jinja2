@@ -12,37 +12,43 @@ smart設計學院-首頁
 <div class="banner-slider">
     <div class="slides-wrapper">
         <!-- Slide 1 -->
-        <div class="slide active"
-            style="background-image: url('{{url_for('static', filename='images/Information Engineering.jpg')}}')">
-            <div class="slide-content">
-                <h2>資訊工程</h2>
-                <p>程式不是死的語言，而是活的邏輯與創造。<br>
-                   我們教的不只是語法，更是解決問題的能力與思維。<br>
-                </p>
+        <a href="{{ url_for('course', course_types='資訊工程') }}" class="slide-link">
+            <div class="slide active"
+                style="background-image: url('{{url_for('static', filename='images/資訊工程.jpg')}}')">
+                <div class="slide-content">
+                    <h2>資訊工程</h2>
+                    <p>程式不是死的語言，而是活的邏輯與創造。<br>
+                       我們教的不只是語法，更是解決問題的能力與思維。<br>
+                    </p>
+                </div>
             </div>
-        </div>
+        </a>
         <!-- Slide 2 -->
-        <div class="slide"
-            style="background-image: url('{{url_for('static', filename='images/Artificial Intelligence.jpg')}}')">
-            <!-- 替換成您的第二張圖片 -->
-            <div class="slide-content">
-                <h2>人工智慧</h2>
-                <p>AI 不會取代人類，但懂 AI 的人將領先未來。<br>
-                    從入門到應用，培養跨時代的智慧與競爭力。<br>
-                    </p>
+        <a href="{{ url_for('course', course_types='人工智慧') }}" class="slide-link">
+            <div class="slide"
+                style="background-image: url('{{url_for('static', filename='images/人工智慧.jpg')}}')">
+                <!-- 替換成您的第二張圖片 -->
+                <div class="slide-content">
+                    <h2>人工智慧</h2>
+                    <p>AI 不會取代人類，但懂 AI 的人將領先未來。<br>
+                        從入門到應用，培養跨時代的智慧與競爭力。<br>
+                        </p>
+                </div>
             </div>
-        </div>
+        </a>
         <!-- Slide 3 -->
-        <div class="slide"
-            style="background-image: url('{{url_for('static', filename='images/Computer Science.jpg')}}')">
-            <!-- 替換成您的第三張圖片 -->
-            <div class="slide-content">
-                <h2>電腦科學</h2>
-                <p>電腦科學，是讓世界運轉的隱形引擎。<br>
-                    從演算法到系統設計，打造你的核心邏輯力。<br>
-                    </p>
+        <a href="{{ url_for('course', course_types='電腦科學') }}" class="slide-link">
+            <div class="slide"
+                style="background-image: url('{{url_for('static', filename='images/電腦科學.jpg')}}')">
+                <!-- 替換成您的第三張圖片 -->
+                <div class="slide-content">
+                    <h2>電腦科學</h2>
+                    <p>電腦科學，是讓世界運轉的隱形引擎。<br>
+                        從演算法到系統設計，打造你的核心邏輯力。<br>
+                        </p>
+                </div>
             </div>
-        </div>
+        </a>
     </div>
 
     <button class="slider-btn prev-btn" aria-label="上一張">❮</button>
@@ -53,4 +59,24 @@ smart設計學院-首頁
     </div>
 </div>
 
+<div class="intro-text">
+    <p>資訊工程的重要性在於它是現代社會運作的基礎，透過設計與建構資訊系統，解決各種實際問題。它不僅支撐企業數位轉型、政府智能化運作，也推動人工智慧、雲端運算、大數據等技術的應用與創新，影響教育、醫療、金融等各行各業，提升效率、創造價值。</p>
+    <p>歡迎各位加入，讓我一起創造奇蹟，並增強個人的價值。</p>
+</div>
+
+<div class="course-intro">
+    <div class="course-intro-text">
+        <h2>資訊工程（Information Engineering）</h2>
+        <p>專注於資訊系統的設計、開發與應用，解決實務問題，推動數位化、系統整合與技術創新，是現代企業與社會運作的核心支撐。</p>
+    </div>
+    <div class="course-intro-text">
+        <h2>人工智慧（Artificial Intelligence, AI）</h2>
+        <p>讓電腦模擬人類智慧，具備學習、推理與判斷能力，廣泛應用於語音辨識、圖像分析、自動駕駛等領域，正重塑人類工作與生活方式。</p>
+    </div>
+    <div class="course-intro-text">
+        <h2>電腦科學（Computer Science）</h2>
+        <p>專注於資訊系統的設計、開發與應用，解決實務問題，推動數位化、系統整合與技術創新，是現代企業與社會運作的核心支撐。</p>
+    </div>
+</div>
+<script src="{{url_for('static', filename='js/index.js')}}"></script>
 {% endblock %}
